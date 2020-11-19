@@ -1,0 +1,7 @@
+# OSX stuff
+.DS_Store
+
+# generated output
+Debug/
+Release/
+
