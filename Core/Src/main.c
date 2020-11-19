@@ -16,6 +16,19 @@
   *
   ******************************************************************************
   */
+
+/**
+ * The code is generated using CubeMX and the NUCLEO-F091RC EVALUATION board.
+ *
+ * The GPIO can be found in `main.h` and uses the Arduino numbering D0-D15, A0-A5.
+ *
+ * There are some support routines added in bsp.c and bsp.h.
+ *
+ * Copyleft (c) 2020 by Roland van Straten (rolandvs@github)
+ *
+ */
+
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -26,6 +39,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "bsp.h"	/* some support routines */
 
 /* USER CODE END Includes */
 
@@ -93,13 +108,27 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
+  /* Keep your stuff between the USER CODE BEGIN-END comments so CubeMX can still be used
+   * However, make a backup first  :-)
+   */
+
+  bsp_console_init();	/* setup the use of the UART */
+  bsp_led_on();			/* i will not tell you what happens here */
+  bsp_welcome();		/* screen full of s*** on USART2 PA2/PA3 D1/D0 */
+
+  /* now you are on your own, save hex */
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+	bsp_led_toggle();
+	bsp_delay_ms(500);
+
+	/* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
