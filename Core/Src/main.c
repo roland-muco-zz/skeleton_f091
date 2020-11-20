@@ -33,6 +33,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "crc.h"
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
@@ -106,7 +107,10 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC_Init();
   MX_I2C1_Init();
+  MX_CRC_Init();
+
   /* USER CODE BEGIN 2 */
+
 
   /* Keep your stuff between the USER CODE BEGIN-END comments so CubeMX can still be used
    * However, make a backup first  :-)
@@ -118,6 +122,8 @@ int main(void)
 
   /* now you are on your own, save hex */
 
+  bsp_hwcrc_test();
+
 
   /* USER CODE END 2 */
 
@@ -128,7 +134,7 @@ int main(void)
 	bsp_led_toggle();
 	bsp_delay_ms(500);
 
-	/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }

@@ -10,6 +10,19 @@
 #define INC_BSP_H_
 
 
+/* hardware CRC */
+typedef enum e_crc_modes {
+
+	CRC16_XMODEM = 0,
+	CRC16_MODBUS = 1,
+
+} crc_modes_t;
+
+
+/* hardware CRC */
+void bsp_hwcrc_reinit(uint8_t selector);
+void bsp_hwcrc_test(void);
+
 /* time delay */
 void bsp_delay_ms(uint32_t period);
 
