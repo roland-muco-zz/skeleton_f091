@@ -43,6 +43,9 @@
 
 #include "bsp.h"	/* some support routines */
 
+#include "SEGGER_SYSVIEW_Conf.h"
+#include "SEGGER_SYSVIEW.h"	/* Real Time Transfer RTT Support */
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -100,6 +103,10 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
+  /** include SystemView **/
+  SEGGER_SYSVIEW_Conf();	/** init the RTT */
+  SEGGER_SYSVIEW_Start();	/** and start */
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -111,6 +118,7 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 
+  SEGGER_SYSVIEW_Stop();	/** only for test **/
 
   /* Keep your stuff between the USER CODE BEGIN-END comments so CubeMX can still be used
    * However, make a backup first  :-)
