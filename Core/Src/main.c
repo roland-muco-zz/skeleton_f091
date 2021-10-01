@@ -94,14 +94,21 @@ int main(void)
 	   *       make sure to refresh the IWDG in the application program too!
 	   */
 
-	  /* show it */
-	  for (int i=0;i<3;i++)
-	  {
-		bsp_led_on();
-		bsp_delay_ms(1);
-		bsp_led_off();
-		bsp_delay_ms(5);
-	  }
+	  /* show RUN .-. ..- -. */
+		bsp_led_on(); bsp_delay_ms(100); bsp_led_off(); bsp_delay_ms(100);
+		bsp_led_on(); bsp_delay_ms(300); bsp_led_off(); bsp_delay_ms(100);
+		bsp_led_on(); bsp_delay_ms(100); bsp_led_off(); bsp_delay_ms(100);
+		bsp_delay_ms(200);
+
+		bsp_led_on(); bsp_delay_ms(100); bsp_led_off(); bsp_delay_ms(100);
+		bsp_led_on(); bsp_delay_ms(100); bsp_led_off(); bsp_delay_ms(100);
+		bsp_led_on(); bsp_delay_ms(300); bsp_led_off(); bsp_delay_ms(100);
+		bsp_delay_ms(200);
+
+		bsp_led_on(); bsp_delay_ms(300); bsp_led_off(); bsp_delay_ms(100);
+		bsp_led_on(); bsp_delay_ms(100); bsp_led_off(); bsp_delay_ms(100);
+		bsp_delay_ms(200);
+	  /**/
 
 	  /* initialize user application's Stack Pointer */
 	  __set_MSP(*(__IO uint32_t*) APPLICATION_ADDRESS);
@@ -119,7 +126,7 @@ int main(void)
 	bsp_led_on();
 	bsp_delay_ms(10);
 	bsp_led_off();
-	bsp_delay_ms(2000);
+	bsp_delay_ms(10000);
   }
 
 }
