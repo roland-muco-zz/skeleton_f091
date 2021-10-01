@@ -4,6 +4,9 @@
  * \date	Nov 19, 2020
  * \author	roland van straten
  *
+ *
+ *	\note	UART5 is used instead of UART2 for console output, see the #if(0)
+ *
  */
 
 #include <stdio.h>
@@ -14,7 +17,6 @@
 #include "main.h"
 
 
-void bsp_hwcrc_reinit(crc_modes_t selector);
 
 /* implementation */
 
@@ -92,6 +94,7 @@ void bsp_console_init(void)
 	setvbuf(stdout, NULL, _IONBF, 0);
 }
 
+#if(0)
 /**
  * \brief	output char via usart2 to enable printf
  */
@@ -110,6 +113,27 @@ int __io_getchar(void)
 	HAL_UART_Receive(&huart2, buf, 1, HAL_MAX_DELAY);
 	return buf[0];
 }
+#else
+/**
+ * \brief	output char via usart5 to enable printf
+ */
+int __io_putchar(int ch)
+{
+	HAL_UART_Transmit(&huart5, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+	return ch;
+}
+
+/**
+ * \brief	input char from USART5 to be able to use scanf
+ */
+int __io_getchar(void)
+{
+	static uint8_t buf[1];
+	HAL_UART_Receive(&huart5, buf, 1, HAL_MAX_DELAY);
+	return buf[0];
+}
+#endif
+
 
 /**
  * \brief	welcome message
